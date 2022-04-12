@@ -28,6 +28,4 @@ jobs:
     - name: check build
       run: ls -al /home/runner/work/dev/dev/build/libs
     - name: check
-      run: cd /build/libs
-    - name: .war
-      run: ls
+      run: ls ~/build/libs
