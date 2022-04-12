@@ -26,4 +26,6 @@ jobs:
     - name: build
       run: ./gradlew build
     - name: check build
-      run: ls -al /home/runner/work/dev/dev/build
+      run: ls -al /home/runner/work/dev/dev/build/libs
+    - name: check
+      run: ls /build/libs
