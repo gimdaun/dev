@@ -22,9 +22,7 @@ jobs:
         java-version: 11
         cache: gradle
         run: |
-              chmod +x gradlew 
-              ./gradlew build
+          chmod +x gradlew 
+          ./gradlew build
     - name: check build
-      run: ls
-    - name: pwd
-      run: pwd
+      run: ls /build/libs
