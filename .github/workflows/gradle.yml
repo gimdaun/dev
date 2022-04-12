@@ -25,4 +25,6 @@ jobs:
               chmod +x gradlew 
               ./gradlew build
     - name: check build
-      run: ls ~/build/libs
+      run: ls
+    - name: pwd
+      run: pwd
