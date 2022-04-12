@@ -30,4 +30,7 @@ jobs:
     - name: check build
       run: ls -al /home/runner/work/dev/dev/build/libs
     - name: set up Docker buildx
+      id: buildx
       run: docker/setup-buildx-action@v1
+    - name: docker ps
+      run: docker ps
