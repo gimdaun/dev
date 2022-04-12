@@ -31,8 +31,3 @@ jobs:
       run: ls -al /home/runner/work/dev/dev/build/libs
     - name: set up Docker buildx
       run: docker/setup-buildx-action@v1
-    - name: Login to DockerHub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
