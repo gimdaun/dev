@@ -21,8 +21,8 @@ jobs:
         distribution: temurin
         java-version: 11
         cache: gradle
-        run: |
-          chmod +x gradlew 
-          ./gradlew build
+        run: chmod +x gradlew
+    - name: build
+      run: ./gradlew build
     - name: check build
-      run: ls -al /home/runner/work/dev/dev
+      run: ls -al /home/runner/work/dev/dev/build
