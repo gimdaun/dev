@@ -61,7 +61,7 @@ jobs:
     - name: was-deploy restart
       run: kubectl rollout restart deployment was
       
-    - id: 'uploaded-files'
-      uses: 'google-github-actions/upload-cloud-storage@v0'
-      env:
-        files: ./build/libs/
+    - id: uploaded-files
+      uses: google-github-actions/upload-cloud-storage@v0
+      with:
+        destination: hidaun
