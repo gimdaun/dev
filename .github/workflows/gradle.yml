@@ -9,6 +9,8 @@ on:
 
 jobs: 
   build:
+    env: 
+      GITHUB_RUN_NUMBER: 0
     runs-on: ubuntu-latest
      
     steps:
