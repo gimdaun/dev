@@ -45,16 +45,17 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: docker push
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_latest
+      
+    - id: auth
+      uses: google-github-actions/auth@v0
+      with:
+        credentials_json: ${{ secrets.GCP_ServiceAccount_KEY }}
     - name: Get GKE Credentials
       uses: google-github-actions/get-gke-credentials@v0.7.0
       with:
         cluster_name: uni
         location: us-central1-c
         project_id: daun-343400
-    - id: auth
-      uses: google-github-actions/auth@v0
-      with:
-        credentials_json: ${{ secrets.GCP_ServiceAccount_KEY }}
-
+  
     - name: was-deploy restart
       run: kubectl rollout restart deployment was
