@@ -68,10 +68,10 @@ jobs:
     - id: upload
       uses: google-github-actions/upload-cloud-storage@v0
       with:
-        run: cp ./build/libs/my-spring-board-0.0.1-SNAPSHOT.war backup.'date +%Y%m%d%H%M'
+        run: cp ./build/libs/my-spring-board-0.0.1-SNAPSHOT.war 'date +%Y%m%d'.war
         path: ./build/libs
         destination: hidaun
         parent: false
-        glob: 'backup.*'
+        glob: '*.war'
         
       
