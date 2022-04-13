@@ -51,3 +51,4 @@ jobs:
         cluster_name: uni
         location: us-central1-c
         project_id: daun-343400
+        credentials: ${{  secrets.GCP_ServiceAccount_KEY  }}
