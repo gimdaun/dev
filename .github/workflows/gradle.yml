@@ -34,10 +34,9 @@ jobs:
         
     - name: docker build
       run: |
-        env:
-          GITHUB_RUN_NUMBER=1  
+        $GITHUB_RUN_NUMBER = 1  
         cp ./build/libs/*.war ./Dockerfile
-        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_${GITHUB_RUN_NUMBER}	./Dockerfile
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_$GITHUB_RUN_NUMBER	./Dockerfile
     - name: docker build
       run: |
         docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_latest ./Dockerfile
