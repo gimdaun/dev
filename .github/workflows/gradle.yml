@@ -66,7 +66,7 @@ jobs:
         credentials_json: ${{ secrets.GCP_ServiceAccount_KEY_cloust_storage }}
         
     - name: mv .war
-      run: mv ./build/libs/my-spring-board-0.0.1-SNAPSHOT.war ./build/libs/'date +%Y%m%d'.war
+      run: mv ./build/libs/my-spring-board-0.0.1-SNAPSHOT.war 'date +%Y%m%d'.war
     - id: upload
       uses: google-github-actions/upload-cloud-storage@v0
       with:
