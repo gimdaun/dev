@@ -51,6 +51,10 @@ jobs:
         cluster_name: uni
         location: us-central1-c
         project_id: daun-343400
-        credentials: ${{  secrets.GCP_ServiceAccount_KEY  }}
+    - name: auth
+      uses: google-github-actions/auth@v0
+      with:
+        credentials_json: ${{ secrets.GCP_ServiceAccount_KEY }}
+
     - name: was-deploy restart
       run: kubectl rollout restart deployment was
