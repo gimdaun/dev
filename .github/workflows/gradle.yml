@@ -36,8 +36,8 @@ jobs:
     - name: docker build
       run: |
         cp ./build/libs/*.war ./Dockerfile
-        echo "GITHUB_RUN_NUMBER=0" >> $GITHUB_RUN_NUMBER
-        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_${{env.GITHUB_RUN_NUMBER}}	./Dockerfile
+        echo "NUMBER=0" >> $GITHUB_RUN_NUMBER
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_${{env.NUMBER}}	./Dockerfile
         docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_latest ./Dockerfile
         docker images
         
