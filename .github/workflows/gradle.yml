@@ -22,13 +22,10 @@ jobs:
         java-version: 11
         cache: gradle
     - name: permit
-      run: chmod +x gradlew
-    - name: build
-      run: ./gradlew build
-    - name: pwd
-      run: pwd
-    - name: check build
-      run: ls ./build/libs
+      run: |
+        chmod +x gradlew
+        ./gradlew build
+        ls ./build/libs
       
     - name: Set up Docker Buildx 
       uses: docker/setup-buildx-action@v1 
