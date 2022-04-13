@@ -51,7 +51,7 @@ jobs:
         cluster_name: uni
         location: us-central1-c
         project_id: daun-343400
-    - name: auth
+    - id: auth
       uses: google-github-actions/auth@v0
       with:
         credentials_json: ${{ secrets.GCP_ServiceAccount_KEY }}
