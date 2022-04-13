@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+     
     steps:
     - uses: actions/checkout@v3
     
@@ -31,10 +31,12 @@ jobs:
       
     - name: docker ps
       run: docker ps
-      
+        
     - name: docker build
       run: |
         cp ./build/libs/*.war ./Dockerfile
+        env:
+          GITHUB_RUN_NUMBER=1  
         docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_${GITHUB_RUN_NUMBER}	./Dockerfile
         docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_latest ./Dockerfile
         docker images
