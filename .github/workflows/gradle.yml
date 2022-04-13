@@ -50,7 +50,7 @@ jobs:
       uses: google-github-actions/auth@v0
       with:
         credentials_json: ${{ secrets.GCP_ServiceAccount_KEY }}
-        service_account: cloud-storage@daun-343400.iam.gserviceaccount.com
+        service_account: ${{ secrets.GCP_ServiceAccount_KEY_cloust_storage }}
     - name: Get GKE Credentials
       uses: google-github-actions/get-gke-credentials@v0.7.0
       with:
@@ -66,5 +66,3 @@ jobs:
       with:
         path: ./build/libs
         destination: hidaun
-    - name: check
-      run: ls
