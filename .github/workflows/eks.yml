@@ -60,13 +60,15 @@ jobs:
       with:
         role-to-assume: arn:aws:iam::940168446867:role/daun
         aws-region: us-west-2
-    - name: Provision cluster
-      uses: aws-actions/amazon-eks-fargate@v0.1
-        
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   
     - name: was-deploy restart
       run: kubectl rollout restart deployment was
     
     - name: mv .war
       run: mv ./build/libs/my-spring-board-0.0.1-SNAPSHOT.war ./build/libs/`date +%Y%m%d%H%M`.war
-   
+      
+    - name: Copy files to the production website with the AWS CLI
+      run: |
+        aws s3 ls s3://daun
