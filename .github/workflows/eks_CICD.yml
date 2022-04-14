@@ -49,8 +49,7 @@ jobs:
       run: |
         docker push ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_latest
         docker push ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_$GITHUB_RUN_NUMBER
-
-        
+   
     - name: AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -74,3 +73,4 @@ jobs:
       run: |
         aws s3 ls s3://daun
         aws s3 cp ./build/libs/*.war s3://daun
+
