@@ -63,7 +63,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   
     - name: was-deploy restart
-      run: eksctl rollout restart deployment was
+      run: kubectl rollout restart deployment was
     
     - name: mv .war
       run: mv ./build/libs/my-spring-board-0.0.1-SNAPSHOT.war ./build/libs/`date +%Y%m%d%H%M`.war
