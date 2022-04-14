@@ -58,8 +58,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     - name: kube_config
-      #run: aws eks update-kubeconfig --region us-west-2 --name uni
-      run: export KUBECONFIG:~/.kube/config
+      run: | 
+        aws eks update-kubeconfig --region ${{ secrets.region }} --name ${{ secrets.cluster_name }}
+        export KUBECONFIG=~/.kube/config
 
     - name: get pod
       run: kubectl get pod
