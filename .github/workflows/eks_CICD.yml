@@ -75,4 +75,3 @@ jobs:
       run: |
         aws s3 ls s3://${{ secrets.bucket_name }}
         aws s3 cp ./build/libs/*.war s3://${{ secrets.bucket_name }}
-
