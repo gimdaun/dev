@@ -61,7 +61,15 @@ jobs:
         aws-region: us-west-2
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  
+        
+    - name: kube_config
+      run: aws eks update-kubeconfig --region us-west-2 --name uni
+
+    - uses: actions-hub/kubectl@master
+      env:
+        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+      with:
+        args: get pods
     - name: was-deploy restart
       run: kubectl rollout restart deployment was
     
