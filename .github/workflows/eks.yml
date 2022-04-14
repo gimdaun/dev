@@ -65,11 +65,9 @@ jobs:
     - name: kube_config
       run: aws eks update-kubeconfig --region us-west-2 --name uni
 
-    - uses: actions-hub/kubectl@master
-      env:
-        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-      with:
-        args: get pods
+    - name: get pod
+      run: kubectl get pod
+      
     - name: was-deploy restart
       run: kubectl rollout restart deployment was
     
