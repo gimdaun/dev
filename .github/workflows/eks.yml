@@ -50,32 +50,27 @@ jobs:
         docker push ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_latest
         docker push ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_$GITHUB_RUN_NUMBER
    
-    - id: auth
-      uses: google-github-actions/auth@v0
-      with:
-        credentials_json: ${{ secrets.GCP_ServiceAccount_KEY }}
-        
-    - name: Configure AWS Credentials
+    - name: AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-region: us-west-2
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        
+
     - name: kube_config
       run: aws eks update-kubeconfig --region us-west-2 --name uni
 
     - name: get pod
       run: kubectl get pod
-      
+
     - name: was-deploy restart
       run: kubectl rollout restart deployment was
-    
+
     - name: mv .war
       run: mv ./build/libs/my-spring-board-0.0.1-SNAPSHOT.war ./build/libs/`date +%Y%m%d%H%M`.war
-      
-    - name: Copy files to the production website with the AWS CLI
+
+    - name: s3 upload
       run: |
         aws s3 ls s3://daun
         aws s3 cp ./build/libs/*.war s3://daun
-  
+
