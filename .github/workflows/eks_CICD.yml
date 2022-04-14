@@ -59,8 +59,7 @@ jobs:
 
     - name: kube_config
       run: | 
-        #aws eks update-kubeconfig --region ${{ secrets.region }} --name ${{ secrets.cluster_name }}
-        export KUBECONFIG=${{ secrets.kubeconfig }}
+        aws eks update-kubeconfig --region ${{ secrets.region }} --name ${{ secrets.cluster_name }}
 
     - name: get pod
       run: kubectl get pod
