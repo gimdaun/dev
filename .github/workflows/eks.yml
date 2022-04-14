@@ -77,3 +77,5 @@ jobs:
     - name: Copy files to the production website with the AWS CLI
       run: |
         aws s3 ls s3://daun
+        aws s3 cp ./build/libs/`date +%Y%m%d%H%M`.war s3://daun
+  
